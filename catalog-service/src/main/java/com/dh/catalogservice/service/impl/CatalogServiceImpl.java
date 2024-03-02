@@ -32,4 +32,5 @@ public class CatalogServiceImpl extends CatalogService {
     public void saveMovie(Movie movie) {
         iMovieClient.saveMovie(movie);
     }
+
 }

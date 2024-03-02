@@ -1,6 +1,8 @@
 package com.dh.catalogservice.client;
 
+import com.dh.catalogservice.configuration.LoadBalancerConfiguration;
 import com.dh.catalogservice.model.Movie;
+import org.springframework.cloud.loadbalancer.annotation.LoadBalancerClient;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -8,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @FeignClient(name = "movie-service")
+@LoadBalancerClient(name = "movie-service",configuration = LoadBalancerConfiguration.class)
 public interface IMovieClient {
 
    // @RequestMapping(method = RequestMethod.GET, value = "/movies/{genre}")
@@ -18,4 +21,6 @@ public interface IMovieClient {
 
      @PostMapping("/movies/save")
         ResponseEntity<Movie> saveMovie(@RequestBody Movie movie);
+
 }
+
