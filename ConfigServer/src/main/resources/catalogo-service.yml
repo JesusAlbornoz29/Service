@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: catalogo-service
+#  cloud:
+#    config:
+#      enabled: false
+server:
+  port: 8081
+management:
+  endpoint:
+    health:
+      show-details: always
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  info:
+    env:
+      enabled: true
+message: Estoy en catalogo-service
+

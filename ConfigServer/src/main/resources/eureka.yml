@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: eureka
+#  cloud:
+#    config:
+#      enabled: false
+server:
+  port: 8761
+management:
+  endpoint:
+    health:
+      show-details: always
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  info:
+    env:
+      enabled: true
+message: Estoy en  eureka
+

@@ -1,0 +1,5 @@
+com\dh\movieservice\model\Movie.class
+com\dh\movieservice\MovieServiceApplication.class
+com\dh\movieservice\repository\MovieRepository.class
+com\dh\movieservice\controller\MovieController.class
+com\dh\movieservice\service\MovieService.class
