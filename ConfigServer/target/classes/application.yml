@@ -8,4 +8,4 @@ spring:
     config:
       server:
         git:
-          uri: https://github.com/JesusAlbornoz29/CentralizedConfigurations.git
+          uri: https://github.com/mmascheroni/CentralizedConfigurations
