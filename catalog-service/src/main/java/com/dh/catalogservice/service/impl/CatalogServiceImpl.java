@@ -10,6 +10,8 @@ import com.dh.catalogservice.exception.GenreNotFoundException;
 import com.dh.catalogservice.model.Genre;
 import com.dh.catalogservice.model.Movie;
 import com.dh.catalogservice.service.CatalogService;
+import io.github.resilience4j.circuitbreaker.CallNotPermittedException;
+import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 
@@ -25,12 +27,17 @@ public class CatalogServiceImpl extends CatalogService { // Aqui practicamente d
     } // Esto es el constructor de CatalogServiceImpl que toma una instancia de IMovieClient, esto quire decir que realizara algunas operaciones relacionada con peliculas a travez de la inyeccion de dependencia
 
     @Override //se utiliza para asegurar que el metodo sobrescribe correctamente el metodo con el mismo nombre de su calse base
+    @CircuitBreaker(name = "movie", fallbackMethod = "emptyGenreFallbackMethod")
     public Genre findByGenre(String genre) throws GenreNotFoundException {
         ResponseEntity<List<Movie>> response = iMovieClient.getMovieByGenre(genre);
         if (response.getStatusCode().is2xxSuccessful()) {
             return new Genre(response.getBody());
         }
         throw new GenreNotFoundException("No se encontró el género: " + genre);
+    }
+
+    private Genre emptyGenreFallbackMethod(CallNotPermittedException a){
+        return new Genre();
     }
 
     /*
