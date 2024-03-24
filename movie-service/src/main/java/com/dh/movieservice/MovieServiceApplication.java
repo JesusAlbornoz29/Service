@@ -18,7 +18,7 @@ public class MovieServiceApplication {
 		SpringApplication.run(MovieServiceApplication.class, args);
 	}
 
-	@Bean
+	@Bean // El Bean hace que se ejecute el metodo loadData al iniciar la aplicacion
 	public CommandLineRunner loadData(MovieRepository repository) {
 		return (args) -> {
 			if (!repository.findAll().isEmpty()) {

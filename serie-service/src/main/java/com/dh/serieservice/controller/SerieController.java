@@ -12,7 +12,7 @@ import java.util.List;
  */
 
 @RestController
-@RequestMapping("/api/v1/series")
+@RequestMapping("/series")
 public class SerieController {
 
     private final SerieService serieService;
@@ -31,7 +31,7 @@ public class SerieController {
         return serieService.getSeriesBygGenre(genre);
     }
 
-    @PostMapping
+    @PostMapping ("/save")
     @ResponseStatus(HttpStatus.CREATED)
     public String create(@RequestBody Serie serie) {
         serieService.create(serie);
