@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @FeignClient(name = "movie-service")
-@LoadBalancerClient(name = "movie-service",configuration = LoadBalancerConfiguration.class)
+@LoadBalancerClient(name = "movie",configuration = LoadBalancerConfiguration.class)
 public interface IMovieClient {
 
      @GetMapping("movies/{genre}")

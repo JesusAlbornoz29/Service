@@ -33,6 +33,8 @@ public class CatalogServiceImpl extends CatalogService { // Aqui practicamente d
         throw new GenreNotFoundException("No se encontró el género: " + genre);
     }
 
+
+
     /*
     Entendamos el codigo de arriba, este método findByGenre() busca películas por género utilizando un cliente de películas (iMovieClient).
     Si la respuesta del servidor es exitosa, crea un objeto Genre con la lista de películas obtenidas y lo devuelve.

@@ -10,17 +10,11 @@
         <module name="prueba" />
         <module name="ConfigServer" />
         <module name="eureka-server" />
+        <module name="serie-service" />
         <module name="gateway" />
         <module name="catalog" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="catalog" target="17" />
-      <module name="ConfigServer" target="17" />
-      <module name="eureka-server" target="17" />
-      <module name="gateway" target="17" />
-      <module name="prueba" target="17" />
-    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
@@ -29,6 +23,7 @@
       <module name="eureka-server" options="-parameters" />
       <module name="gateway" options="-parameters" />
       <module name="prueba" options="-parameters" />
+      <module name="serie-service" options="-parameters" />
     </option>
   </component>
 </project>

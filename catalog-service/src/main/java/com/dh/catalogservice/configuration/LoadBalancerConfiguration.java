@@ -12,6 +12,16 @@ import org.springframework.core.env.Environment; // Importar la clase Environmen
 // @Configuration
 public class LoadBalancerConfiguration {
 
+
+    @Bean
+    public ReactorLoadBalancer<ServiceInstance> randomLoadBalancer(
+            LoadBalancerClientFactory loadBalancerClientFactory) {
+        String name = "random";
+        return new RandomLoadBalancer(loadBalancerClientFactory.getLazyProvider(name, ServiceInstanceListSupplier.class), name);
+    }
+
+
+    /*
     // https://docs.spring.io/spring-cloud-commons/docs/current/reference/html/#switching-between-the-load-balancing-algorithms
     @Bean
     ReactorLoadBalancer<ServiceInstance> randomLoadBalancer(Environment environment,
@@ -21,5 +31,7 @@ public class LoadBalancerConfiguration {
                 .getLazyProvider(name, ServiceInstanceListSupplier.class),
                 name);
     }
+
+   */
 }
 

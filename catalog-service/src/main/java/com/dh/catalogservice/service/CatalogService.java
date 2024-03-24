@@ -9,5 +9,9 @@ public abstract class CatalogService {
         return null;
     }
 
+    public Genre buscarPorGenero(String genero) throws GenreNotFoundException {
+        return null;
+    }
+
     public abstract void saveMovie(Movie movie);
 }
