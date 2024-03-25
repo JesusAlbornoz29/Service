@@ -20,12 +20,16 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.logging.Logger;
 
 @RestController // En lugar de vistas, devuelve datos serializados (JSON O XML) directamente a la respuesta HTTP.
 @RequestMapping("/movies") // Todas las solicitudes seran dirigidas a '/movies'
 public class MovieController {
     private final MovieService movieService;
     // declaramos movieService que proporciona los servicios relacionados con las peliculas, como buscar peliculas por genero o guardar una nueva pelicula.
+
+    private static java.util.logging.Logger log = Logger.getLogger(MovieController.class.getName());
+
 
     public MovieController(MovieService movieService) {
         this.movieService = movieService;
@@ -34,6 +38,7 @@ public class MovieController {
 
     @GetMapping("/{genre}") // Indica que Se manejaran peticiones GET
     ResponseEntity<List<Movie>> getMovieByGenre(@PathVariable String genre) { //@PathVariable extrae lo obtenido en @GetMapping("/{genre}") y lo guarda en String genre
+        log.info("Se encontro la lista de genero");
         return ResponseEntity.ok().body(movieService.findByGenre(genre));
         // ResponseEntity> los datos findByGenere(genre) se envuelven dentro de un 'ResponseEntity'
         // .ok() Indica que la solicitud se completo con exito
@@ -42,6 +47,7 @@ public class MovieController {
 
     @PostMapping("/save") // Indica que se manejaran peticiones POST
     ResponseEntity<Movie> saveMovie(@RequestBody Movie movie) {
+        log.info("Se creo la pelicula correctamente");
         return ResponseEntity.ok().body(movieService.save(movie));
 
     }
