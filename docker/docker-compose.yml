@@ -13,5 +13,14 @@ services:
       - '3366:3306'
     expose:
       - '3306'
+  zipkin:
+    image:  openzipkin/zipkin:2
+    ports:
+      - 9411:9411
 
+  rabbitmq:
+    image: rabbitmq:3-management
+    ports:
+      - 5672:5672
+      - 15672:15672
 
