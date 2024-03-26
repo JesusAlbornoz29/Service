@@ -15,6 +15,7 @@ calcular el total, etc...
 package com.dh.movieservice.controller;
 
 import com.dh.movieservice.model.Movie;
+import com.dh.movieservice.queue.MovieSender;
 import com.dh.movieservice.service.MovieService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -27,12 +28,14 @@ import java.util.logging.Logger;
 public class MovieController {
     private final MovieService movieService;
     // declaramos movieService que proporciona los servicios relacionados con las peliculas, como buscar peliculas por genero o guardar una nueva pelicula.
-
     private static java.util.logging.Logger log = Logger.getLogger(MovieController.class.getName());
 
+    private final MovieSender senderMovie;
 
-    public MovieController(MovieService movieService) {
+
+    public MovieController(MovieService movieService, MovieSender senderMovie) {
         this.movieService = movieService;
+        this.senderMovie = senderMovie;
     }
     // Creamos el constructor MovieController y le inyectamos la dependencia de MovieService para que el controlador interactue con la capa Service
 
@@ -48,6 +51,7 @@ public class MovieController {
     @PostMapping("/save") // Indica que se manejaran peticiones POST
     ResponseEntity<Movie> saveMovie(@RequestBody Movie movie) {
         log.info("Se creo la pelicula correctamente");
+        senderMovie.send(movie);
         return ResponseEntity.ok().body(movieService.save(movie));
 
     }
