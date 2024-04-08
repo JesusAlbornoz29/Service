@@ -3,46 +3,6 @@
 <p align="center" >
   <img alt="Diagrama" width="600" height="480" src="https://github.com/JesusAlbornoz29/Service/blob/main/imagen_2024-04-08_092035938.png" style="vertical-align: middle;">
 </p>
-  <h2>Tareas</h2>
-  <ul>
-    <li>Configurar los microservicios para su autodescubrimiento con Eureka.</li>
-    <li>Centralizar la configuración de los microservicios.</li>
-    <li>Realizar la comunicación con Feign.</li>
-    <li>Realizar el balanceo de carga</li>
-    <li>Realizar el proyecto Gateway o realizar el ruteo.</li>
-    <li>Comunicacion con RabbitMQ</li>
-  </ul>
-  <ul>
-    <h3>serie-service</h3>
-    <ul>
-      <li>Configurar	el	nuevo	servicio	para	su	auto	descubrimiento	utilizando	el	nombre: serie-service. </li>
-      <li>Centralizar la configuración de serie-service.</li>
-      <li>Realizar la comunicación con Feign de serie-service y catalog-service para persistir en la base de datos de serie, cada serie creada. </li>
-      <li>Agregar RabbitMQ y enviar un mensaje en el momento que se agregue una nueva serie. </li>
-    </ul>
-    <h3>movie-service</h3>
-    <ul>
-      <li>Agregar RabbitMQ y enviar un mensaje en el momento que se agregue una nueva película. </li>
-    </ul>
-    <h3>catalog-service</h3>
-    <ul>
-      <li>Modificar la consulta por género, que ahora será directamente a su base de datos no relacional MongoDB. </li>
-      <li>Actualizar catalog utilizando Feign para comunicarlo con el microservicio serie-service, y obtener desde catálogo las series filtradas por género, como así también utilizar la Feign para crearlas. </li>
-      <li>Agregar RabbitMQ y escuchar los mensajes que envían movie-service y serie-service. En caso de recibir un mensaje de algún servicio, actualizar el listado correspondiente, ya sea de las películas o las series. </li>
-    </ul>
-    </br>
-    <h3>Spring Cloud: traceo utilizando Zipkin</h3>
-    <ul>
-      <li>Configurar Zipkin en todos los microservicios para visualizar la trazabilidad.</li>
-    </ul>
-    <h3>Persistencia - Resilence4j</h3>
-    <ul>
-      <li>Se debe seleccionar uno de los servicios (preferentemente el que consideres que será más utilizado) y adaptarlo para que el mismo sea tolerante a fallos. </li>
-    </ul>
-  </ul>
-</div>
-
-<div>
   <h2>Proyecto</h2>
     <p>A partir de la siguiente arquitectura de microservicios, te pedimos implementar la misma utilizando Spring Cloud.</p>
     <p>El proyecto consiste de tres microservicios: Movie, Serie y Catalog.</p>
@@ -113,5 +73,50 @@
         </ul>
     </ul>
   </ul>
+
+
+
+
+
+  <h2>Tareas</h2>
+  <ul>
+    <li>Configurar los microservicios para su autodescubrimiento con Eureka.</li>
+    <li>Centralizar la configuración de los microservicios.</li>
+    <li>Realizar la comunicación con Feign.</li>
+    <li>Realizar el balanceo de carga</li>
+    <li>Realizar el proyecto Gateway o realizar el ruteo.</li>
+    <li>Comunicacion con RabbitMQ</li>
+  </ul>
+  <ul>
+    <h3>serie-service</h3>
+    <ul>
+      <li>Configurar	el	nuevo	servicio	para	su	auto	descubrimiento	utilizando	el	nombre: serie-service. </li>
+      <li>Centralizar la configuración de serie-service.</li>
+      <li>Realizar la comunicación con Feign de serie-service y catalog-service para persistir en la base de datos de serie, cada serie creada. </li>
+      <li>Agregar RabbitMQ y enviar un mensaje en el momento que se agregue una nueva serie. </li>
+    </ul>
+    <h3>movie-service</h3>
+    <ul>
+      <li>Agregar RabbitMQ y enviar un mensaje en el momento que se agregue una nueva película. </li>
+    </ul>
+    <h3>catalog-service</h3>
+    <ul>
+      <li>Modificar la consulta por género, que ahora será directamente a su base de datos no relacional MongoDB. </li>
+      <li>Actualizar catalog utilizando Feign para comunicarlo con el microservicio serie-service, y obtener desde catálogo las series filtradas por género, como así también utilizar la Feign para crearlas. </li>
+      <li>Agregar RabbitMQ y escuchar los mensajes que envían movie-service y serie-service. En caso de recibir un mensaje de algún servicio, actualizar el listado correspondiente, ya sea de las películas o las series. </li>
+    </ul>
+    </br>
+    <h3>Spring Cloud: traceo utilizando Zipkin</h3>
+    <ul>
+      <li>Configurar Zipkin en todos los microservicios para visualizar la trazabilidad.</li>
+    </ul>
+    <h3>Persistencia - Resilence4j</h3>
+    <ul>
+      <li>Se debe seleccionar uno de los servicios (preferentemente el que consideres que será más utilizado) y adaptarlo para que el mismo sea tolerante a fallos. </li>
+    </ul>
+  </ul>
+</div>
+
+<div>
 
 
